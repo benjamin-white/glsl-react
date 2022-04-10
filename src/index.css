@@ -17,6 +17,10 @@ body {
   line-height: 1.5;
 }
 
+body {
+  overflow: hidden;
+}
+
 pre {
   font-family: monospace, monospace;
   font-size: 1em;

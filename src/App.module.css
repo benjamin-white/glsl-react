@@ -1,0 +1,4 @@
+.surfaceWrap span,
+.surfaceWrap canvas {
+  display: block !important;
+}

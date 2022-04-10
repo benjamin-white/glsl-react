@@ -11,16 +11,23 @@ const shader = Shaders.create({
 
 const GradientCorners = ({ width, height }) => {
   
-  const [blue, setBlue] = useState(0.5);
+  const [channels, setChannels] = useState({
+    green: 0.0,
+    blue: .5,
+  })
 
   return (
     <Surface 
       width={width} 
       height={height} 
-      onMouseOver={() => setBlue(1.0)}
-      onMouseOut={() => setBlue(0.0)}
+      onMouseMove={(ev) => {
+        setChannels({
+          green: ev.clientY / height,
+          blue: ev.clientX / width
+        })
+      }}
     >
-      <Node shader={shader.gradientCorners} uniforms={{blue: blue}} />
+      <Node shader={shader.gradientCorners} uniforms={{green: channels.green, blue: channels.blue}} />
     </Surface>
   )
 
